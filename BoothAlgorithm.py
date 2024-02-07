@@ -74,25 +74,19 @@ def boothalgorithm(M, Q):
 
     for i in range(len(M)):
         A.append("0")
-    #print(A)
     for i in range(count):
         Q0 = str(Q[-1])
         if Q0 == "0" and Q_1 == "1":
             A = binaryaddition(A, M)
             Q_1, A, Q = shift(str(A)+str(Q)+str(Q_1))
         elif Q0 == "1" and Q_1 == "0":
-            print(two_complement(M))
             A = binaryaddition(A, two_complement(M))
             Q_1, A, Q = shift(str(A)+str(Q)+str(Q_1))
         elif Q0 == "0" and Q_1 == "0":
             Q_1, A, Q = shift(str(A)+str(Q)+str(Q_1))
         elif Q0 == "1" and Q_1 == "1":
             Q_1, A, Q = shift(str(A)+str(Q)+str(Q_1))
-    
     ans = ''.join(A) + ''.join(Q)
-    #print(A)
-    #print(Q)
-    print(ans)
     return ans
 
 def result(M, Q):
@@ -101,6 +95,7 @@ def result(M, Q):
     if s[0] == "1":
         flag = 1
         s = two_complement(s)
+    print("Answer in binary : " + s)
     if flag == 1:
         return binary_to_decimal(s)*-1
     else:
@@ -112,36 +107,9 @@ def binary_to_decimal(binary):
         decimal += (pow(2, (len(binary)-1)-i)*int(binary[i]))
     return decimal
 
-def decimal_to_binary(decimal):
-    binary = []
-    flag = 0
-
-    if decimal<0:
-        flag = 1
-        decimal = abs(decimal)
-    while decimal>0:
-        binary.append(str(decimal%2))
-        decimal = decimal//2
-    binary.append('0')
-    print(binary)
-    binary.reverse()
-    if flag==1:
-        binary = two_complement(binary)
-    return list(binary)
-
-def preprocessing(a,b):
-    tup = (a, b) if (len(a)>len(b)) else (b, a)
-    larger = tup[0]
-    smaller = tup[1]
-    diff = len(larger)-len(smaller)
-    for i in range(diff):
-        smaller.insert(1, '0')
-    smaller = ''.join(smaller)
-    larger = ''.join(larger)
-    return smaller, larger
-
 if __name__ == '__main__':
+    print("Vineet Shenvi     60004220012")
     print("Enter two numbers:")
     a = input()
     b = input()
-    print(result(a, b))
+    print("Answer in decimal:" + str(result(a, b)))
