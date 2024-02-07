@@ -84,10 +84,19 @@ def restoringdivision(M, Q):
     quo = ''.join(Q)
     return rem, quo
 
+def binary_to_decimal(binary):
+    decimal = 0
+    for i in range(len(binary)):
+        decimal += (pow(2, (len(binary)-1)-i)*int(binary[i]))
+    return decimal
 
 if __name__ == '__main__':
+    print("Vineet Shenvi     60004220012")
     print("Enter two numbers:")
     a = input()
     b = input()
-    print(restoringdivision(a, b))
+    rem, quo = restoringdivision(a, b)
+    print("Quotient: " + quo + " (" + str(binary_to_decimal(quo)) + ")")
+    print("Remainder: " + rem + " (" + str(binary_to_decimal(rem)) + ")")
+
 
