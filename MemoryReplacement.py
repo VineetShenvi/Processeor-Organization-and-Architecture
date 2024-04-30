@@ -148,11 +148,12 @@ if __name__ == '__main__':
         print("\nFIFO")
         fifo(nFrames, pages)
     if ch == 2:
+        print("\nLRU")
         lru(nFrames, pages)
-        rint("\LRU")
     if ch == 3:
+        print("\nOptimal")
         optimal(nFrames, pages)
-        rint("\Optimal")
+        
 
     # print("\n\n####################################\n")
     # print("FIFO")
