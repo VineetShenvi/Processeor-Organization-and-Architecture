@@ -6,9 +6,9 @@ def display(memory, processes):
     print("|-------------------------------------------|")
     for i in range(len(memory)):
         if allocation[i] != 0:
-            print(f"|{memory[i]}K              |         P{processes.index(allocation[i])}")
+            print(f"|{memory[i]}K              |         P{processes.index(allocation[i])} ({allocation[i]}K)      |")
         if allocation[i] == 0:
-            print(f"|{memory[i]}K              |         Not allocated")
+            print(f"|{memory[i]}K              |         Not allocated  |")
         print("|-------------------------------------------|")
     not_allocated = []
     for i in range(len(processes)):
@@ -25,7 +25,7 @@ def display(memory, processes):
 
 def first_fit(memory, processes):   
     visited=[]
-    print("\nFirstFit:")
+    print("\nFirst Fit:")
     for process in processes:
         index = 0
         for block in memory:
@@ -38,6 +38,7 @@ def first_fit(memory, processes):
     display(memory, processes)
 
 def worst_fit(memory, processes):
+    print("Worst Fit:")
     visited=[]
     for process in processes:
         index = 0
@@ -56,6 +57,7 @@ def worst_fit(memory, processes):
     display(memory, processes)
 
 def best_fit(memory, processes):
+    print("Best Fit:")
     visited=[]
     for process in processes:
         index = 0
@@ -86,7 +88,6 @@ if __name__ == '__main__':
             stop = 1
         else:
             memory.append(mem)
-    print(memory)
 
     stop=0
     print("Enter processes:\n(-1 to quit)")
@@ -97,11 +98,25 @@ if __name__ == '__main__':
         else:
             processes.append(proc)
 
+    # print("\n####################################################")
+    # for block in memory:
+    #         allocation.append(0)
+    # first_fit(memory, processes)
+
+    # print("\n####################################################\n")
+    # for block in memory:
+    #         allocation.append(0)
+    # best_fit(memory, processes)
+
+    # print("\n####################################################\n")
+    # for block in memory:
+    #         allocation.append(0)
+    # worst_fit(memory, processes)
+    # print("\n####################################################\n")
     ch=0
     while ch!=4:
         for block in memory:
             allocation.append(0)
-
         ch = int(input("Which fit do you want?\n1. First Fit\t2. Worst Fit\t3. Best Fit\t4.Exit\n"))
         if ch == 1:
             first_fit(memory, processes)
